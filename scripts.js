@@ -14,7 +14,13 @@ const sumButton = document.getElementById("sum").addEventListener("click", () =>
     memory.operator = calcSum;
 })
 const equalsButton = document.getElementById("equals").addEventListener("click", () => {
-    display.innerHTML = memory.operator(parseFloat(memory.operand1), parseFloat(memory.operand2));
+    let result = memory.operator(parseFloat(memory.operand1), parseFloat(memory.operand2));
+    display.innerHTML = result;
+    memory.operand1 = result.toString();
+    memory.operand2 = "";
+    
+
+
 })
 function calcSum(a, b) {
     return a + b;
