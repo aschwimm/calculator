@@ -24,7 +24,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 7em;
+    font-size: 9em;
     background-color: rgb(188, 216, 188);
     height: 100%;
     width: auto;
@@ -37,11 +37,10 @@
     grid-template-columns: repeat(4, 1fr);
 }
 
-.row:first-child > :nth-child(-n+3) {
+.row:nth-child(2) > :nth-child(-n+3) {
     background-color: rgb(226, 226, 226);
     color: black;
 }
-
 .row > :last-child {
     background-color: rgb(255, 196, 0);
 }
@@ -92,13 +91,16 @@
     .row:last-child .calc-button:first-child {
         width: 200px;
     }
+    .row:last-child {
+        column-gap: 0;
+    }
 }
 @media screen and (max-width: 500px) {
     .container {
         padding: 3px;
         margin: 1px;
         row-gap: 1px;
-        grid-template-rows: repeat(6, 80px);
+        grid-template-rows: repeat(6, 75px);
     }
     #display {
         font-size: 5em;
@@ -107,13 +109,17 @@
         column-gap: 1px;
     }
     .calc-button {
-        height: 60px;
-        width: 60px;
+        height: 70px;
+        width: 70px;
         border-radius: 30px;
         font-size: 1.5em;
     }
     .row:last-child .calc-button:first-child {
-        width: 130px;
+        width: 140px;
         
+    }
+    .row:last-child {
+        
+        column-gap: 0;
     }
 }
