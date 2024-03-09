@@ -1,5 +1,14 @@
 const MAX_DISPLAY_SIZE = 13;
 const TO_PERCENT = 100;
+function toPercent(param) {
+    param = parseFloat(param);
+    param /= 100;
+    return param;
+}
+const string = "your string with a period";
+const lengthAfterPeriod = string.split(".")[1]?.length || 0;
+console.log(lengthAfterPeriod);
+
 const calcNumbers = Array.from(document.querySelectorAll(".calc-button")).filter((element) => {
     if(!isNaN(element.id)) {
         return element;
@@ -34,13 +43,13 @@ const equalsButton = document.getElementById("equals").addEventListener("click",
 const pointButton = document.getElementById("point").addEventListener("click", () => {
     const point = ".";
     if(!memory.operator) {
-        if(memory.operand1.length >= MAX_DISPLAY_SIZE) {
+        if(memory.operand1.length >= MAX_DISPLAY_SIZE + 1) {
             return
         }
         memory.operand1 += point;
         display.innerHTML = memory.operand1;
     } else {
-        if(memory.operand2.length >= MAX_DISPLAY_SIZE) {
+        if(memory.operand2.length >= MAX_DISPLAY_SIZE + 1) {
             return
         }
         memory.operand2 += point;
@@ -49,16 +58,16 @@ const pointButton = document.getElementById("point").addEventListener("click", (
 })
 const percentButton = document.getElementById("percent").addEventListener("click", () => {
     if(!memory.operator) {
-        if(memory.operand1.length >= MAX_DISPLAY_SIZE) {
+        if(memory.operand1.length >= MAX_DISPLAY_SIZE + 1) {
             return
         }
-        memory.operand1 /= TO_PERCENT;
+        memory.operand1 = toPercent(memory.operand1);
         display.innerHTML = memory.operand1;
     } else {
         if(memory.operand2.length >= MAX_DISPLAY_SIZE) {
             return
         }
-        memory.operand2 /= TO_PERCENT;
+        memory.operand2 /= toPercent(memory.operand2);
         display.innerHTML = memory.operand2;
     }
 })

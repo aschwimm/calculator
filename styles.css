@@ -103,7 +103,7 @@
         grid-template-rows: repeat(6, 75px);
     }
     #display {
-        font-size: 5em;
+        font-size: 2.2em;
     }
     .row {
         column-gap: 1px;
