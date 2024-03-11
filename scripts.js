@@ -23,6 +23,11 @@ const calcNumbers = Array.from(document.querySelectorAll(".calc-button")).filter
 })
 const display = document.getElementById("display");
 const clearButton = document.getElementById("clear").addEventListener("click", () => {
+    if(memory.operator === null) {
+        memory.operand1 = "0"
+    } else {
+        memory.operand2 = "0";
+    }
     memory.operand1 = "0";
     memory.operand2 = "";
     memory.operator = null;
@@ -41,6 +46,9 @@ const divideButton = document.getElementById("divide").addEventListener("click",
     memory.operator = calcDivide;
 })
 const equalsButton = document.getElementById("equals").addEventListener("click", () => {
+    if(memory.operand2 === "") {
+        return;
+    }
     let result = memory.operator(parseFloat(memory.operand1), parseFloat(memory.operand2));
     if (result > 100000000) {
         result = result.toExponential(2);
