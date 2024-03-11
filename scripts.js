@@ -22,13 +22,17 @@ const calcNumbers = Array.from(document.querySelectorAll(".calc-button")).filter
     }
 })
 const display = document.getElementById("display");
+
 const clearButton = document.getElementById("clear").addEventListener("click", () => {
-    memory.operand1 = "0";
-    memory.operand2 = "";
-    memory.operator = null;
-    display.innerHTML = "0";
+    if(memory.operand1 !== "0" && memory.operand2 === "") {
+        memory.operand1 = "0";
+        display.innerHTML = memory.operand1;
+    }
+    else if(memory.operand2 !== "") {
+        memory.operand2 = "";
+        display.innerHTML = "0";
+    }
 })
-clearButton.addEventListener()
 const sumButton = document.getElementById("sum").addEventListener("click", () => {
     memory.operator = calcSum;
 })
@@ -149,12 +153,14 @@ calcNumbers.forEach((button) => {
             if (operandValue.includes("e-")) {
                 return;
             }
+            memory.operand1.toString();
             memory.operand1 += button.id;
             display.innerHTML = memory.operand1;
         } else {
             if(memory.operand2.length >= MAX_DISPLAY_SIZE) {
                 return
             }
+            memory.operand2.toString();
             memory.operand2 += button.id;
             display.innerHTML = memory.operand2;
         }
