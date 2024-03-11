@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: Roboto, Arial, Helvetica, sans-serif;
     font-weight: bold;
+    background-color: rgb(22, 22, 22);
 }
 
 .container {
@@ -25,10 +26,9 @@
     justify-content: flex-end;
     align-items: center;
     font-size: 9em;
-    background-color: rgb(188, 216, 188);
     height: 100%;
     width: auto;
-    color: rgb(73, 73, 73);
+    color: rgb(241, 241, 241);
     padding-right: 5px;
 }
 .row {
@@ -38,13 +38,21 @@
 }
 
 .row:nth-child(2) > :nth-child(-n+3) {
-    background-color: rgb(226, 226, 226);
-    color: black;
+    background-color: rgb(240, 240, 240);
+    color: rgb(77, 76, 76);
+}
+.row:nth-child(2) > :nth-child(-n+3):active {
+    background-color: rgb(244, 244, 255);
+    color: rgb(7, 7, 7);
+    transition: background-color 0.25s ease-out, color 0.25 ease-out;
 }
 .row > :last-child {
     background-color: rgb(255, 196, 0);
 }
-
+.row > :last-child:active {
+    background-color: rgb(255, 221, 111);
+    transition: background-color 0.25s ease-out;
+}
 .row:last-child {
     grid-template-columns: 50% 25% 25%;
     column-gap: 5px;
@@ -63,7 +71,10 @@
     font-size: 5em;
     cursor: pointer;
 }
-
+.calc-button:active {
+    background-color: rgb(114, 113, 113);
+    transition: background-color 0.25s ease-out;
+}
 .row:last-child .calc-button:first-child {
     width: 400px;
     justify-content: flex-start;
@@ -122,4 +133,8 @@
         
         column-gap: 0;
     }
+}
+.operator-clicked-on {
+    background-color: white !important;
+    color: rgb(255, 196, 0);
 }
