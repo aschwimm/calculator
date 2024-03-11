@@ -62,11 +62,17 @@ const pointButton = document.getElementById("point").addEventListener("click", (
         if(memory.operand1.length >= MAX_DISPLAY_SIZE + 1) {
             return
         }
+        else if (memory.operand1.includes(point)) {
+            return;
+        }
         memory.operand1 += point;
         display.innerHTML = memory.operand1;
     } else {
         if(memory.operand2.length >= MAX_DISPLAY_SIZE + 1) {
             return
+        }
+        else if (memory.operand2.includes(point)) {
+            return;
         }
         memory.operand2 += point;
         display.innerHTML = memory.operand2;
