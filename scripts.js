@@ -23,16 +23,12 @@ const calcNumbers = Array.from(document.querySelectorAll(".calc-button")).filter
 })
 const display = document.getElementById("display");
 const clearButton = document.getElementById("clear").addEventListener("click", () => {
-    if(memory.operator === null) {
-        memory.operand1 = "0"
-    } else {
-        memory.operand2 = "0";
-    }
     memory.operand1 = "0";
     memory.operand2 = "";
     memory.operator = null;
     display.innerHTML = "0";
 })
+clearButton.addEventListener()
 const sumButton = document.getElementById("sum").addEventListener("click", () => {
     memory.operator = calcSum;
 })
