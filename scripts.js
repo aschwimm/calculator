@@ -1,3 +1,9 @@
+const memory = {
+    operand1: "0",
+    operand2: "",
+    operator: null
+}   
+let input = "";
 const MAX_DISPLAY_SIZE = 10;
 const TO_PERCENT = 100;
 function toPercent(param) {
@@ -15,7 +21,9 @@ function toPercent(param) {
     param = Math.round(param * 1000000000000) / 1000000000000;
     return param;
 }
-
+function resetMemory() {
+    memory[operand1, operand2, operator] = ["0", "", null];
+}
 const calcNumbers = Array.from(document.querySelectorAll(".calc-button")).filter((element) => {
     if(!isNaN(element.id)) {
         return element;
@@ -32,6 +40,9 @@ const clearButton = document.getElementById("clear").addEventListener("click", (
 const operatorButtons = Array.from(document.querySelectorAll(".operator-button"));
 const sumButton = document.getElementById("sum");
 sumButton.addEventListener("click", () => {
+    if(memory.operator){
+        displayResult();
+    }
     memory.operator = calcSum;
     operatorButtons.forEach((element) => {
         element.classList.remove("operator-clicked-on");
@@ -41,6 +52,9 @@ sumButton.addEventListener("click", () => {
 
 const multiplyButton = document.getElementById("multiply");
 multiplyButton.addEventListener("click", () => {
+    if(memory.operator){
+        displayResult();
+    }
     memory.operator = calcMultiply;
     operatorButtons.forEach((element) => {
         element.classList.remove("operator-clicked-on");
@@ -49,6 +63,9 @@ multiplyButton.addEventListener("click", () => {
 })
 const subtractButton = document.getElementById("subtract");
 subtractButton.addEventListener("click", () => {
+    if(memory.operator){
+        displayResult();
+    }
     memory.operator = calcSubtract;
     operatorButtons.forEach((element) => {
         element.classList.remove("operator-clicked-on");
@@ -57,6 +74,9 @@ subtractButton.addEventListener("click", () => {
 })
 const divideButton = document.getElementById("divide");
 divideButton.addEventListener("click", () => {
+    if(memory.operator){
+        displayResult();
+    }
     memory.operator = calcDivide;
     operatorButtons.forEach((element) => {
         element.classList.remove("operator-clicked-on");
@@ -64,7 +84,7 @@ divideButton.addEventListener("click", () => {
     divideButton.classList.add("operator-clicked-on");
 })
 const equalsButton = document.getElementById("equals");
-equalsButton.addEventListener("click", () => {
+function displayResult() {
     if(memory.operand2 === "") {
         return;
     }
@@ -81,7 +101,9 @@ equalsButton.addEventListener("click", () => {
     operatorButtons.forEach((element) => {
         element.classList.remove("operator-clicked-on");
     })
-});
+}
+equalsButton.addEventListener("click", displayResult);
+
 const pointButton = document.getElementById("point").addEventListener("click", () => {
     const point = ".";
     if(!memory.operator) {
@@ -152,12 +174,6 @@ function calcSubtract(a, b) {
 function calcDivide(a, b) {
     return a / b;
 }
-const memory = {
-    operand1: "0",
-    operand2: "",
-    operator: null
-}   
-let input = "";
 calcNumbers.forEach((button) => {
     button.addEventListener("click", () => {
         if(!memory.operator) {
